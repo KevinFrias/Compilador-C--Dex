@@ -39,9 +39,9 @@ expresion :
 
 declaration:
     tipo asignacion_variable ';' {printf("1.- Debemos obtener el tipo de dato con el que estamos trabajando \n");
-                         printf("2.- Checamos si es que tuvo una asignación o simplemente se declaró \n");
-                         printf("3.- Reservamos un espacio de memoria para poder guardar nuestra variable \n");
-                        }
+                                  printf("2.- Checamos si es que tuvo una asignación o simplemente se declaró \n");
+                                  printf("3.- Reservamos un espacio de memoria para poder guardar nuestra variable \n");
+                                  }
     | CONST tipo asignacion_constante ';'
     ;
 
@@ -50,9 +50,8 @@ tipo :
     | STRING
     ;
 
-
 asignacion_variable :
-       VARIABLE
+      VARIABLE
     | VARIABLE '=' expresion_number
     | VARIABLE '=' STRING_LITERAL
     | VARIABLE '=' expresion_number ',' asignacion_variable
@@ -60,14 +59,14 @@ asignacion_variable :
     ;
 
 asignacion_constante :
-     VARIABLE '=' expresion_number
+      VARIABLE '=' expresion_number
     | VARIABLE '=' STRING_LITERAL
     | VARIABLE '=' expresion_number ',' asignacion_constante
     | VARIABLE '=' STRING_LITERAL  ',' asignacion_constante
     ;
 
 expresion_number:
-         NUMBER
+          NUMBER
         | expresion_number '*' expresion_number {$$ = $1 * $3;}
         | expresion_number '/' expresion_number {$$ = $1 / $3;}
         | expresion_number '+' expresion_number {$$ = $1 + $3;}
