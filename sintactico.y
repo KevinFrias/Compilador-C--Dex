@@ -43,6 +43,8 @@ declaration:
                                   printf("3.- Reservamos un espacio de memoria para poder guardar nuestra variable \n");
                                   }
     | CONST tipo asignacion_constante ';'
+    | VARIABLE assing ';' {printf("There was an assing \n ");
+        
     ;
 
 tipo :
@@ -54,6 +56,9 @@ asignacion_variable :
       VARIABLE
     | VARIABLE '=' expresion_number
     | VARIABLE '=' STRING_LITERAL
+
+    | VARIABLE ',' asignacion_variable
+
     | VARIABLE '=' expresion_number ',' asignacion_variable
     | VARIABLE '=' STRING_LITERAL  ',' asignacion_variable
     ;
@@ -63,6 +68,18 @@ asignacion_constante :
     | VARIABLE '=' STRING_LITERAL
     | VARIABLE '=' expresion_number ',' asignacion_constante
     | VARIABLE '=' STRING_LITERAL  ',' asignacion_constante
+    ;
+
+assing:
+       '=' data
+     | '=' data '+' data
+     | '=' data assing
+    ;
+
+data:
+    expresion_number
+    | STRING_LITERAL
+    | VARIABLE
     ;
 
 expresion_number:
